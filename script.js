@@ -24,6 +24,14 @@ const text = document.querySelector(".current-forecast p");
 
 const titleContainer = document.querySelector('.forecasts'); //Для хранения предсказаний
 
+function createNewForecast(title, text) {
+  const template = document.querySelector("#forecast-item");
+  const newForeCast = template.content.cloneNode(true);
+  newForeCast.querySelector("h3").textContent = title;
+  newForeCast.querySelector("p").textContent = text;
+  titleContainer.append(newForeCast);
+}
+
 
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min) + min);
@@ -31,9 +39,7 @@ function getRandomInt(min, max) {
 
 // При клике на кнопку
 button.addEventListener("click", function () {
-    const number = getRandomInt(0,4);
-    number.classList.append();
-
+  const number = getRandomInt(0,4);
 
     
   // Подставляем предсказание в title
@@ -58,6 +64,7 @@ button.addEventListener("click", function () {
   }
   // Подставляем вероятность предсказания в text
   text.textContent = `Вероятность — ${getRandomInt(0, 100)}%`;
+  createNewForecast(title.textContent, text.textContent);
 });
 
 
