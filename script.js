@@ -15,54 +15,53 @@
 /* Для добавления предсказания в список воспользуйся шаблоном forecast-item */
 
 
-const button = document.querySelector('.forecast-btn');//кнопка//
-console.log(button);
-const percent = document.querySelectorAll('.current-forecast p');//проценты//
-console.log(percent);
-const item = document.querySelector('.forecast-item');//для добавления в список//
-console.log(item);
-const forecast = document.querySelectorAll('.current-forecasts h1');//предсказания//
-console.log(forecast);
-const list = document.querySelector('.forecasts');//список в который сохр предсказанния//
-console.log(list);
+const button = document.querySelector(".forecast-btn");
+
+// Заголовок предсказания
+const title = document.querySelector(".current-forecast h1");
+// Текст предсказания
+const text = document.querySelector(".current-forecast p");
+
+const titleContainer = document.querySelector('.forecasts'); //Для хранения предсказаний
 
 
-button.addEventListener('click', function button(){
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min) + min);
+}
 
-    const messageText = sendInput.value;
-        const listForecast = document.createElement('.forecasts);
-        newPhrase.classList.add('.current-forecasts h1');
-        newPhare.textContent = messageText;
+// При клике на кнопку
+button.addEventListener("click", function () {
+    const number = getRandomInt(0,4);
+    number.classList.append('.forecasts-item');
+
+
     
-    function generatePhrases() {
-        let word1 = ["Сегодня у тебя все получится!"];
-        let word2 = ["Сегодня тебя позовут на свидание!"];
-        let word3 = ["Ты сдашь экзамен."];
-        let word4 = ["Тебе подарят котенка."];
-        let word5 = ["Сегодня тебя ждет приятный сюрприз!"];
-        
-        let randomWord1 = Math.floor(Math.random() * word1.length);
-        let randomWord2 = Math.floor(Math.random() * word2.length);
-        let randomWord3 = Math.floor(Math.random() * word3.length);
-        let randomWord4 = Math.floor(Math.random() * word4.length);
-        let randomWord5 = Math.floor(Math.random() * word5.length);
-        let phrase = word1[randomWord1] + " " + word2[randomWord2] + " " + words[randomWord3] + " " + word4[randomWord4] + " " + word5[randomWord5];
-
-        return phrase;
-    }
-
-    function generatePercent() {
-        let randomPercent1 = +(Math.random()*(max-min));
-        let randomPercent2 = +(Math.random()*(max-min));
-        let randomPercent3 = +(Math.random()*(max-min));
-        let randomPercent4 = +(Math.random()*(max-min));
-        let randomPercent5 = +(Math.random()*(max-min));
-        let percent = percent1[randomPercent1] + " " + percent2[randomPercent2] + " " + percent3[randomPercent3] + " " + percent4[randomPercent4] + " " + percent5[randomPercent5];
-
-        return percent;
-    }
-    
-
-    console.log(generatePhrases());
-    console.log(eneratePercent(0, 100)+%);
+  // Подставляем предсказание в title
+  title.textContent = `Твое прекрасное предсказание — ${getRandomInt(0, 4)}`;
+  switch (number) {
+    case 0:
+        title.textContent = `Сегодня тебя позовут на свидание!`;
+      break;
+    case 1:
+        title.textContent = `Ты сдашь экзамен!`;
+      break;
+    case 2:
+        title.textContent = `Сегодня тебя ждет сюрприз!`;
+      break;
+    case 3:
+        title.textContent = `Встретишься с подругой!`;
+      break;
+    case 4:
+        title.textContent = `Будет хорошая погода!`;
+      break;
+    default:
+  }
+  // Подставляем вероятность предсказания в text
+  text.textContent = `Вероятность — ${getRandomInt(0, 100)}%`;
 });
+
+
+
+
+
+
