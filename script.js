@@ -32,7 +32,7 @@ function getRandomInt(min, max) {
 // При клике на кнопку
 button.addEventListener("click", function () {
     const number = getRandomInt(0,4);
-    number.classList.append('.forecasts-item');
+    number.classList.append();
 
 
     
