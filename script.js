@@ -13,3 +13,62 @@
 /* При генерации нового предсказания старое предсказание должно добавляться в начало списка «Мои предсказания» — .forecasts  */
 
 /* Для добавления предсказания в список воспользуйся шаблоном forecast-item */
+
+
+const button = document.querySelector(".forecast-btn");
+
+// Заголовок предсказания
+const title = document.querySelector(".current-forecast h1");
+// Текст предсказания
+const text = document.querySelector(".current-forecast p");
+
+const titleContainer = document.querySelector('.forecasts'); //Для хранения предсказаний
+
+function createNewForecast(title, text) {
+  const template = document.querySelector("#forecast-item");
+  const newForeCast = template.content.cloneNode(true);
+  newForeCast.querySelector("h3").textContent = title;
+  newForeCast.querySelector("p").textContent = text;
+  titleContainer.append(newForeCast);
+}
+
+
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min) + min);
+}
+
+// При клике на кнопку
+button.addEventListener("click", function () {
+  const number = getRandomInt(0,4);
+
+    
+  // Подставляем предсказание в title
+  title.textContent = `Твое прекрасное предсказание — ${getRandomInt(0, 4)}`;
+  switch (number) {
+    case 0:
+        title.textContent = `Сегодня тебя позовут на свидание!`;
+      break;
+    case 1:
+        title.textContent = `Ты сдашь экзамен!`;
+      break;
+    case 2:
+        title.textContent = `Сегодня тебя ждет сюрприз!`;
+      break;
+    case 3:
+        title.textContent = `Встретишься с подругой!`;
+      break;
+    case 4:
+        title.textContent = `Будет хорошая погода!`;
+      break;
+    default:
+  }
+  // Подставляем вероятность предсказания в text
+  text.textContent = `Вероятность — ${getRandomInt(0, 100)}%`;
+  createNewForecast(title.textContent, text.textContent);
+});
+
+
+
+
+
+
